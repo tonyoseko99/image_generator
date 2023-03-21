@@ -1,3 +1,4 @@
+import express from "express";
 import { Leap } from "@leap-ai/sdk";
 import dotenv from "dotenv";
 
@@ -9,12 +10,7 @@ declare var process: {
   };
 };
 
-const main = async () => {
-  const leap = new Leap(process.env.LEAP_API_KEY);
-  const prompt = "The quick brown fox jumps over the lazy dog.";
-  const { data, error } = await leap.generate.generateImage({ prompt });
+const app = express();
+const port = 3000;
+const leap = new Leap(process.env.LEAP_API_KEY);
 
-  console.log(data?.images[0].uri);
-};
-
-main();
