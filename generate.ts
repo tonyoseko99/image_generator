@@ -1,6 +1,8 @@
 import express from "express";
 import { Leap } from "@leap-ai/sdk";
 import dotenv from "dotenv";
+import Midjourney from "midjourney-discord-api";
+
 
 dotenv.config();
 
@@ -64,15 +66,16 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/generate", async (req, res) => {
-  const prompt = req.body.prompt;
-  const { data, error } = await leap.generate.generateImage({ prompt });
+              const prompt = req.body.prompt;
+const client = new Midjourney("keymj.txt");
+const prompts: string[] = await client.describeUrl(
+  prompt,
+);
+console.log("reversed prompt: ", prompts);
+  //const prompt = req.body.prompt;
+  //const { data, error } = await leap.generate.generateImage({ prompt });
 
-  if (error) {
-    res.status(500).send({
-      error: error.message,
-    });
-  }
-
+  
   res.send(`
   <style>
     /* Add CSS rules here */
@@ -83,11 +86,11 @@ app.post("/generate", async (req, res) => {
       max-width: 100%;
     }
   </style>
-  <img src="${data?.images[0].uri}" alt="Generated image" />
+  <img src="${prompts}" alt="Generated image" />
 `);
 });
 
 // start the Express server
-app.listen(port, () => {
+app.listen(4200, () => {
   console.log(`server started at http://localhost:${port}`);
 });
