@@ -1,0 +1,5 @@
+"guild_id": "1100053788120850552"
+"channel_id": "1100054146742222858"
+"session_id": "22947a0488ae690ca53860f5c1c119ae"
+"application_id": "936929561302675456"
+"authorization": "MTA5OTg5NTA0OTQwNTM1Mzk4NQ.G9oMza.oYjiPJTNfji-FE6exjhrpGqeRzTGKbm4clCbM8"
