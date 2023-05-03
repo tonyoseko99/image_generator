@@ -88,6 +88,6 @@ app.post("/generate", async (req, res) => {
 });
 
 // start the Express server
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log(`server started at http://localhost:${port}`);
 });
